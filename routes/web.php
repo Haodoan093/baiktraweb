@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SachController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,5 +29,11 @@ Route::post('/sach', [SachController::class, 'store'])->name('sach.store');
 Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.index');
 Route::get('/add-to-cart/{maSach}', [CartController::class, 'addToCart'])->name('add.to.cart');
 
+
+// Route cho trang thanh toán
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
-Route::post('/checkout', [CheckoutController::class, 'placeOrder'])->name('checkout.place');
+
+
+Route::post('/checkout/place-order', [CheckoutController::class, 'placeOrder'])->name('checkout.placeOrder');
+Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');

@@ -20,12 +20,12 @@
             <tbody>
                 @foreach ($sachs as $sach)
                 <tr>
-                    <td>{{ $sach->ma_sach }}</td>
+                    <td>{{ $sach->id }}</td>
                     <td>{{ $sach->ten_sach }}</td>
                     <td>{{ $sach->mo_ta }}</td>
                     <td>{{ $sach->gia }}</td>
                     <td>{{ $sach->so_luong }}</td>
-                    <td><a href="{{ route('add.to.cart', $sach->ma_sach) }}" class="btn btn-success">Mua</a></td>
+                    <td><a href="{{ route('add.to.cart', $sach->id) }}" class="btn btn-success">Mua</a></td>
                 </tr>
                 @endforeach
             </tbody>

@@ -7,27 +7,33 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    public function addToCart($maSach) {
-        $sach = Sach::find($maSach); // Dùng ma_sach thay vì id
+    public function addToCart($id) {
+        // Sử dụng ma_sach để tìm kiếm
+        $sach = Sach::findOrFail($id); // Trả về lỗi 404 nếu không tìm thấy sách
 
         $cart = session()->get('cart', []);
 
-        if (isset($cart[$maSach])) {
-            $cart[$maSach]['quantity']++;
+        // Kiểm tra nếu sách đã có trong giỏ hàng
+        if (isset($cart[$id])) {
+            $cart[$id]['quantity']++;
         } else {
-            $cart[$maSach] = [
+            // Thêm sách mới vào giỏ hàng
+            $cart[$id] = [
+                "id" => $id,
                 "ten_sach" => $sach->ten_sach,
                 "gia" => $sach->gia,
                 "quantity" => 1
             ];
         }
 
+        // Lưu giỏ hàng vào session
         session()->put('cart', $cart);
+
         return redirect()->route('sach.index')->with('success', 'Sách đã được thêm vào giỏ hàng!');
     }
 
     public function viewCart() {
-        $cart = session()->get('cart');
+        $cart = session()->get('cart', []); // Đảm bảo trả về mảng rỗng nếu không có giỏ hàng
         return view('cart.index', compact('cart'));
     }
 }

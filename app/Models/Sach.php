@@ -9,7 +9,7 @@ class Sach extends Model
 {
     use HasFactory;
     protected $table = 'sach'; 
-    protected $primaryKey = 'ma_sach'; // Chỉ định khóa chính
+    protected $primaryKey = 'id'; // Chỉ định khóa chính
     protected $fillable = ['ten_sach', 'mo_ta', 'so_luong', 'gia'];
 
 }

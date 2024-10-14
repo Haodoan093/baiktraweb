@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('sach', function (Blueprint $table) {
-            $table->id('ma_sach');
+            $table->id();  // Đây sẽ tạo cột id mặc định
+            // Nếu muốn tên khác, hãy chắc chắn sử dụng kiểu dữ liệu phù hợp
             $table->string('ten_sach');
             $table->text('mo_ta');
             $table->integer('so_luong');

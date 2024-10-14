@@ -136,7 +136,7 @@
                     <li><a href="#">SIÊU SALE T9</a></li>
                     <li><a href="#">FINAL SALE TỪ 50K</a></li>
 
-                    <li><a href="{{ route('sach.index') }}">SẢN PHẨM</a></li>
+                    <li><a href="{{ route('products.index') }}">SẢN PHẨM</a></li>
                 </ul>
             </nav>
             <!-- Logo -->
@@ -160,11 +160,11 @@
                     @if (Auth::check())
                     <!-- Biểu tượng Đăng xuất -->
 
-                    <a class="nav-link" href=""
+                    <a class="nav-link" href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="fas fa-sign-out-alt"></i>
                     </a>
-                    <form id="logout-form" action="" method="POST" style="display: none;">
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
                     <li class="">
